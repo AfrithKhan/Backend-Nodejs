@@ -21,7 +21,7 @@ post_build:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"Backend","imageUri":"%s"}]'    $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinitions.json
+      - printf '[{"name":"Backend","imageUri":"%s"}]'    $REPOSITORY_URI:$IMAGE_TAG > $CODEBUILD_SRC_DIR/imagedefinitions.json
+      - cat $CODEBUILD_SRC_DIR/imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
