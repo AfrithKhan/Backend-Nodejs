@@ -1,0 +1,6 @@
+[
+    {
+      "name": "Nodejs",
+      "imageUri": "131333373690.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs:latest"
+    }
+]
