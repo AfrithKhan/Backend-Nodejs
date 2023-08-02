@@ -1,15 +1,27 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                // Checkout your code from version control (e.g., Git)
-                // Run npm install and other build tasks here
-                // sh "docker build -t nodejs ."
-                sh 'npm install'
-            }
-        }
-
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {
+        
+    stage('Git') {
+      steps {
+        git 'git@github.com:AfrithKhan/Backend-Nodejs.git'
+      }
     }
+     
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
+    }  
+    
+            
+    stage('Test') {
+      steps {
+        sh 'node test'
+      }
+    }
+  }
 }
