@@ -3,6 +3,7 @@ const { User } = require('../models');
 module.exports = {
 
     index(req, res) {
+        console.log("test")
         User.findAll({})
             .then(users => res.json({
                 error: false,
