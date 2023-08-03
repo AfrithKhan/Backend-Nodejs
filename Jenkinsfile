@@ -12,7 +12,9 @@ pipeline {
               
               // Remote SSH commands
               def remoteCommands = [
-                  "ssh root@35.154.35.30 'cd /home/ubuntu/ && ls -la'",
+                  "ssh root@35.154.35.30 'cd /home/ubuntu/Backend-Nodejs && docker build -t node .'",
+                  "ssh root@35.154.35.30 'docker stop node && docker rm node'"
+                  "ssh root@35.154.35.30 'docker run --name node -d -p 3333:3333 node'",                  
                   // Add more remote commands here if needed
               ]
               
