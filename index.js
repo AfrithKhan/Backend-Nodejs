@@ -10,6 +10,10 @@ app.use(cors());
 
 app.use(require('./routes'));
 
+app.use('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+
 app.listen(PORT, () => {
     console.log(`Server started at: http://localhost:${PORT}`);
 });
