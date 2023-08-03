@@ -12,8 +12,7 @@ pipeline {
               
               // Remote SSH commands
               def remoteCommands = [
-                  "ssh root@35.154.35.30 'cd /home/ubuntu/'",
-                  "ssh root@35.154.35.30 'ls -la'",
+                  "ssh root@35.154.35.30 'cd /home/ubuntu/ && ls -la'",
                   // Add more remote commands here if needed
               ]
               
