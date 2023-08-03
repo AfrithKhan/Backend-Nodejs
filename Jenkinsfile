@@ -3,24 +3,30 @@ pipeline {
     
     
   stages {
-        
-    // stage('Git') {
-    //   steps {
-    //     git 'git@github.com:AfrithKhan/Backend-Nodejs.git'
-    //   }
-    // }
-     
-    stage('Build') {
+
+    stage('SSH into remote instance') {
       steps {
-        sh 'npm install'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
+          script {
+              // Define the SSH credentials ID configured in Jenkins
+              def sshCredentialsId = '09dd4efb-df5e-471b-b6cb-0e9f4aafe54d'
+              
+              // Remote SSH commands
+              def remoteCommands = [
+                  "ssh root@35.154.35.30 'cd /home/ubuntu/'",
+                  "ssh root@35.154.35.30 'ls -la'",
+                  // Add more remote commands here if needed
+              ]
+              
+              // Use the SSH Agent to run the remote commands
+              sshagent(credentials: [sshCredentialsId]) {
+                  for (def command in remoteCommands) {
+                      sh command
+                  }
+              }
+          }
       }
     }
+        
+
   }
 }
