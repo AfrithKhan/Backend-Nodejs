@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use(require('./routes'));
+// app.use(require('./routes'));
 
 app.use('/', (req, res) => {
     res.send('Hello, World!');
